@@ -5,7 +5,7 @@ createApp({
     data() {
         return {
             toDoList: [],
-
+            addtask: '',
         }
     },
     methods: {
@@ -13,6 +13,12 @@ createApp({
             axios.get('server.php').then(response => {
                 this.toDoList = response.data;
             })
+        },
+        addNewTask() {
+
+            this.toDoList.push({ name: this.addtask, check: "undone", });
+            this.addtask = '';
+
         }
     },
     mounted() {
