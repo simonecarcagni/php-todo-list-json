@@ -19,6 +19,13 @@ $toDoList = [
     ],
 ];
 
+
+
+if(isset($_POST['task'])) {
+    $toDoList = ["name" => $_POST['task']['name'], "check" => $_POST['task']['check']];
+};
+
 header('Content-Type: application/json');
 
 echo json_encode($toDoList);
+

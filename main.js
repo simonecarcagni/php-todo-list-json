@@ -5,7 +5,10 @@ createApp({
     data() {
         return {
             toDoList: [],
-            addtask: '',
+            addtask: {
+                'name': '',
+                'done': 'undone'
+            },
         }
     },
     methods: {
@@ -16,9 +19,17 @@ createApp({
         },
         addNewTask() {
 
-            this.toDoList.push({ name: this.addtask, check: "undone", });
-            this.addtask = '';
+            const data = {
+                task: this.addtask
+            };
 
+            axios.post('server.php', data,
+                {
+                    headers: { 'Content-Type': 'multipart/form-data' }
+                }).then(response => {
+                    this.toDoList = response.data;
+                    this.addtask.text = '';
+                });
         }
     },
     mounted() {

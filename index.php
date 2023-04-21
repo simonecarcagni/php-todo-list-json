@@ -18,11 +18,13 @@
             <ul class="list-group">
                 <li v-for="todo in toDoList" class="list-group-item" :class="todo.check">{{todo.name}}</li>
             </ul>
-            <div class="input-group mb-3">
-                <input v-model="addtask" type="text" class="form-control" placeholder="Inserisci una Task..."
-                    @keydown.enter="addNewTask" @keydown="">
-                <button type="button" class="btn btn-primary" @click="addNewTask">Aggiungi</button>
-            </div>
+            <form action="index.php" method="POST">
+                <div class="input-group mb-3">
+                    <input v-model="addtask" type="text" class="form-control" placeholder="Inserisci una Task..." 
+                        id="task" name="task">
+                    <button type="button" class="btn btn-primary">Aggiungi</button>
+                </div>
+            </form>
         </div>
     </div>
 
